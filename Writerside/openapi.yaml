@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title:  E-Sport Bethub Api
+  title: E-Sport Bethub Api
   version: 1.0.0
   description: This is a backend API for the E-Sport Bethub Api spa application. It is a RESTFULL API built with Laravel. Created for study project.
   contact:
@@ -237,6 +237,73 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
+  /api/user/:
+    get:
+      tags:
+        - get-user
+      summary: Get user
+      operationId: get-user
+      parameters:
+        - name: HeaderAuth
+          in: header
+          required: true
+          schema:
+            $ref: '#/components/schemas/headerAuth'
+
+      responses:
+        '200':
+          description: OK - Returns the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responseUser'
+
+        '401':
+          description: Unauthorized - User not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorUnauthenticated'
+    delete:
+      summary: This route is used to delete own user account or other user account if the user is admin. This route does not delete the admins users.
+      operationId: delete-user
+      parameters:
+        - name: HeaderAuth
+          in: header
+          required: true
+          schema:
+            $ref: '#/components/schemas/headerAuth'
+      responses:
+        '204':
+          description: No Content - User deleted successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    type: string
+                    description: This user has been deleted successfully
+                    example: User deleted successfully
+        '401':
+          description: Unauthorized - User already deleted or not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorUnauthenticated'
+
+        '403':
+          description: Forbidden - User not authorized to delete this user or is admin user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+
+        '419':
+          description: Session Expired - Validation errors (CSRF token)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorCsrf'
 
   /api/user/password:
     put:
