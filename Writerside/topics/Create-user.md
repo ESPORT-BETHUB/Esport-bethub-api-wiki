@@ -10,7 +10,9 @@ This endpoint is used to create a new user.
     <request>
         <sample lang="JSON" title="Payload">
         {
-            "name": "John Doe",
+            "first_name": "John",
+            "last_name": "Doe",
+            "username": "johndoe",
             "email": "john.doe@exemple.com",
             "password": "password2023", 
             "password_confirmation": "password2023"
@@ -18,7 +20,9 @@ This endpoint is used to create a new user.
         </sample>
         <sample lang="javascript" title="JavaScript">
         const data = {
-            name: "John Doe",
+            first_name: "John",
+            last_name: "Doe",
+            username: "johndoe",
             email: "john.doe@exempl.com",
             password: "password2023",
             password_confirmation: "password2023"

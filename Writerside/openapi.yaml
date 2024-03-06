@@ -482,11 +482,22 @@ components:
     usersInput:
       type: object
       properties:
-        name:
+        first_name:
           type: string
+          max_length: 150
+          required: true
+        last_name:
+          type: string
+          max_length: 150
+          required: true
+        username:
+          type: string
+          max_length: 150
           required: true
         email:
           type: string
+          format: email
+          max_length: 255
           required: true
         password:
           type: string
