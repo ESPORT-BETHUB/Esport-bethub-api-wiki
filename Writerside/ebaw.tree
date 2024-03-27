@@ -29,4 +29,9 @@
         <toc-element topic="Confirm-password.md"/>
         <toc-element topic="Confirm-password-status.md"/>
     </toc-element>
+    <toc-element topic="Wallet.md">
+        <toc-element topic="Create-new-Wallet.md"/>
+        <toc-element topic="Edit-Wallet.md"/>
+        <toc-element topic="get-Self-Wallet.md"/>
+    </toc-element>
 </instance-profile>
